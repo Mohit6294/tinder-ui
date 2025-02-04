@@ -18,7 +18,9 @@
     add reducer to store
 --- you should not be able to access other routes without login
 --- if token is not present , redirect user to Login page
---- 
+--- Logout feature
+--- get the feed and add feed in the store
+--- built the user card on feed
 
 
 
