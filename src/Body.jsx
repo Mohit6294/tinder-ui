@@ -14,9 +14,8 @@ const Body = () => {
 
 
   const fetchUser =async () =>{
-    if(userData) return ;
     try{
-      const res = await axios.get(`${BASE_URL}/profile/view`);
+      const res = await axios.get(`${BASE_URL}/profile/view`,{withCredentials: true});
       dispatch(res.data);
     }catch(error){
       navigate("/login");
@@ -27,10 +26,9 @@ const Body = () => {
 
 
   useEffect(()=>{
-    if(userData !== null){
+    if(userData === null){
       fetchUser();
     }
-    navigate("/login");
   },[])
   return (
     <div>
