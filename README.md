@@ -24,6 +24,8 @@
 --- Edit profile feature
 --- Show Toast Message on Save of profile
 --- see all connections
+--- see all my connectionRequests
+--- Feature - Accept/Reject Connection reqeuest
 
 
 

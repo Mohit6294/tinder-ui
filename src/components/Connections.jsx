@@ -26,7 +26,7 @@ const Connections = () => {
       <div className='text-center'>Connections</div>
       {connections?.map(connection=>{
         const {firstName, lastName, photoUrl, description,age} = connection;
-        return (<div className='flex justify-center border m-4 p-2 '>
+        return (<div className='flex justify-center border m-4 p-4 rounded-lg mx-auto w-2/3'>
           <div className=''>
           <img className="h-20 w-20"src={photoUrl} alt='photo'></img>
           </div>
