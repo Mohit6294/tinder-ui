@@ -1,7 +1,21 @@
+import axios from 'axios';
 import React from 'react'
+import { BASE_URL } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { removeFeed } from '../utils/feedSlice';
 
 const UserCard = ({feed}) => {
-  const {firstName, lastName, photoUrl, age, gender, description} = feed;
+  const {firstName, lastName, photoUrl, age, gender, description,_id} = feed;
+  const dispatch = useDispatch();
+
+  const handleFeedRequests = async (status,userId) =>{
+    try{
+      const response = await axios.post(`${BASE_URL}/request/send/${status}/${userId}`,{},{withCredentials: true});
+      dispatch(removeFeed(userId))
+    }catch(error){
+      //Handle Error : TODO: creating a Error page
+    }
+  }
   return (
     <div className="card bg-base-100 w-96 shadow-xl">
     <figure>
@@ -14,8 +28,8 @@ const UserCard = ({feed}) => {
       <p>{age && gender && (age + ","+gender)}</p>
       <p>{description}</p>
       <div className="card-actions justify-center">
-        <button className="btn btn-primary">Ignore</button>
-        <button className="btn btn-secondary">Interested</button>
+        <button className="btn btn-primary" onClick={()=> handleFeedRequests("ignored",_id)}>Ignore</button>
+        <button className="btn btn-secondary" onClick={()=> handleFeedRequests("interested",_id)}>Interested</button>
       </div>
     </div>
   </div>

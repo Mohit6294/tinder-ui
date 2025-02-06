@@ -11,10 +11,9 @@ const Feed = () => {
   const feedData = useSelector(store=>store.feed);
 
   const fetchFeed = async () =>{
-    if(feedData) return;
     try{
       const response = await axios.get(`${BASE_URL}/feed`,{withCredentials: true});
-      dispatch(addFeed(response?.data));
+      dispatch(addFeed(response.data.user));
     }catch(error){
       //handle error page by creating a error page
     }
@@ -25,7 +24,7 @@ const Feed = () => {
   },[])
   return (
     feedData &&  <div className='m-2 p-2 flex justify-center'>
-       <UserCard feed = {feedData?.user?.[0]}/>
+       <UserCard feed = {feedData[0]}/>
     </div>
    
   )
