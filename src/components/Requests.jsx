@@ -38,7 +38,7 @@ const Requests = () => {
       <div className='text-center'>Connection Requests</div>
       {requests?.map(request=>{
         const {firstName, lastName, photoUrl, description,age} = request.fromUserId;
-        return (<div className='flex flex-row justify-center border m-4 p-4 rounded-lg mx-auto w-2/3'>
+        return (<div key={request._id}  className='flex flex-row justify-center border m-4 p-4 rounded-lg mx-auto w-2/3'>
           <div className=''>
           <img className="h-40 w-40"src={photoUrl} alt='photo'></img>
           </div>
