@@ -18,7 +18,7 @@ const Body = () => {
       const res = await axios.get(`${BASE_URL}/profile/view`,{withCredentials: true});
       dispatch(res.data);
     }catch(error){
-      navigate("/login");
+      return navigate("/login");
       console.log(error);
       
     }
